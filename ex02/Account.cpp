@@ -3,7 +3,6 @@
 #include <iomanip>
 #include "Account.hpp"
 
-/* static은 전역으로 초기화 해주기*/
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
@@ -33,7 +32,7 @@ void	Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
 	std::cout << " accounts:" << getNbAccounts() << ";total:" << getTotalAmount() << \
-				";deposits:" << getNbDeposits() << ";withdrawals:" << getNbWithdrawals() << std::endl;
+				";deposits:" <<  getNbDeposits() << ";withdrawals:" << getNbWithdrawals() << std::endl;
 }
 
 Account::Account( int initial_deposit )
@@ -60,6 +59,8 @@ void	Account::makeDeposit( int deposit )
 	std::cout << " index:" << _accountIndex << ";p_amount:" << _amount << ";deposit:" << deposit << ";amount:";
 	_amount += deposit;
 	_nbDeposits++;
+	_totalNbDeposits++;
+	_totalAmount += deposit;
 	std::cout << _amount << ";nb_deposits:" << _nbDeposits << std::endl;
 }
 
@@ -71,6 +72,8 @@ bool	Account::makeWithdrawal( int withdrawal )
 		std::cout << " index:" << _accountIndex << ";p_amount:" << _amount << ";withdrawal:" << withdrawal << ";amount:";
 		_amount -= withdrawal;
 		_nbWithdrawals++;
+		_totalNbWithdrawals++;
+		_totalAmount -= withdrawal;
 		std::cout << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 		return (true);
 	}
