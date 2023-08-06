@@ -19,7 +19,7 @@ all:	$(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-%o:	%.c $(INCS)
+%o:	%.cpp $(INCS)
 	$(CXX) $(CXXFLAGS) $(INCS) -c $^ -o $@
 
 clean: 
